@@ -1,5 +1,4 @@
 from database.DB_connect import DBConnect
-from model.arco import Arco
 from model.areoporto import Areoporto
 
 
@@ -27,7 +26,7 @@ class DAO():
 
 
     @staticmethod
-    def getAllEdges(distanza):
+    def getAllEdges(distanza, idMapAO):
         conn = DBConnect.get_connection()
         cursor = conn.cursor(dictionary=True)
 
@@ -41,7 +40,7 @@ class DAO():
 
         for row in cursor:
             # creo semplicemente una lista di tuple (a1, a1, media) invece che un oggetto che dovrei creare
-            res.append((row["a1"], row["a2"], row["media"]))
+            res.append((idMapAO[row["a1"]], idMapAO[row["a2"]], row["media"]))
 
         cursor.close()
         conn.close()

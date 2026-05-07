@@ -16,9 +16,9 @@ class Areoporto:
     def __hash__(self):
         return hash(self.ID) #delego alla hash della chiave primaria
 
-    # def __eq__(self, other):
-    #     return self.ID == other.ID #saranno uguali se hanno stessa chiave primaria
+    def __eq__(self, other):
+        return self.ID == other.ID #saranno uguali se hanno stessa chiave primaria
 
     def __str__(self):
         #metodo che uso per stampare l'oggetto
-        return f"{self.AIRPORT} ({self.IATA_CODE}) -- {self.CITY}"
+        return f"{self.AIRPORT} ({self.CITY})"
