@@ -12,6 +12,7 @@ class Model:
             self._idMapAO[n.ID] = n
 
     def buildGraph(self, distanza):
+        self._graph.clear()
         # aggiunge i nodi
         self._graph.add_nodes_from(self._nodes)
 
@@ -28,3 +29,6 @@ class Model:
         allEdges = DAO.getAllEdges(distanza, self._idMapAO)
         for e in allEdges:
                 self._graph.add_edge(e[0], e[1], weight=e[2])
+
+    def getPesi(self):
+        return self._graph.edges(data="weight")
